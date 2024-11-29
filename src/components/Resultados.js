@@ -3,62 +3,43 @@ import React from "react";
 function Resultados({ respuestas, usuario, onGuardar, onReiniciar }) {
     const diagnostico = [];
 
-    // Evaluar Trastorno de Ansiedad Generalizada (TAG)
-    if ((respuestas["Trastorno de Ansiedad Generalizada (TAG)"] || 0) >= 3) {
-        diagnostico.push("Trastorno de Ansiedad Generalizada (TAG)");
-    }
+    // Función para evaluar si se cumplen los criterios de diagnóstico
+    const evaluarDiagnostico = (categoria, umbral) => {
+        const respuestaCategoria = respuestas[categoria] || 0; // Si no hay respuesta, será 0
+        return respuestaCategoria >= umbral; // Comprobamos si la respuesta supera el umbral
+    };
 
-    // Evaluar Trastorno de Pánico
-    if ((respuestas["Trastorno de Pánico"] || 0) >= 2) {
-        diagnostico.push("Trastorno de Pánico");
-    }
+    // Definir las categorías y los umbrales
+    const categorias = [
+        { nombre: "Trastorno de Ansiedad Generalizada (TAG)", umbral: 3 },
+        { nombre: "Trastorno de Pánico", umbral: 2 },
+        { nombre: "Fobia Específica", umbral: 2 },
+        { nombre: "Agorafobia", umbral: 2 },
+        { nombre: "Trastorno de Ansiedad Social (Fobia Social)", umbral: 2 },
+        { nombre: "Trastorno Obsesivo-Compulsivo (TOC)", umbral: 2 },
+        { nombre: "Trastorno de Ansiedad Inducido por Sustancias", umbral: 2 },
+        { nombre: "Otros Trastornos Especificados de Ansiedad", umbral: 2 },
+        { nombre: "Trastorno de Estrés Agudo (TEA)", umbral: 2 },
+        { nombre: "Trastorno de Estrés Postraumático (TEPT)", umbral: 2 },
+        { nombre: "Trastornos de Adaptación", umbral: 2 },
+    ];
 
-    // Evaluar Fobia Específica
-    if ((respuestas["Fobia Específica"] || 0) >= 2) {
-        diagnostico.push("Fobia Específica");
-    }
+    // Evaluar cada categoría y agregarla al diagnóstico si supera el umbral
+    categorias.forEach((categoria) => {
+        if (evaluarDiagnostico(categoria.nombre, categoria.umbral)) {
+            diagnostico.push(categoria.nombre);
+        }
+    });
 
-    // Evaluar Agorafobia
-    if ((respuestas["Agorafobia"] || 0) >= 2) {
-        diagnostico.push("Agorafobia");
-    }
+    // Comprobamos si todas las respuestas son 0 (todas "NO") y mostramos un mensaje adecuado
+    const todasRespuestasNo = Object.values(respuestas).every(valor => valor === 0);
 
-    // Evaluar Trastorno de Ansiedad Social (Fobia Social)
-    if ((respuestas["Trastorno de Ansiedad Social (Fobia Social)"] || 0) >= 2) {
-        diagnostico.push("Trastorno de Ansiedad Social (Fobia Social)");
-    }
-
-    // Evaluar Trastorno Obsesivo-Compulsivo (TOC)
-    if ((respuestas["Trastorno Obsesivo-Compulsivo (TOC)"] || 0) >= 2) {
-        diagnostico.push("Trastorno Obsesivo-Compulsivo (TOC)");
-    }
-
-    // Evaluar Trastorno de Ansiedad Inducido por Sustancias
-    if ((respuestas["Trastorno de Ansiedad Inducido por Sustancias"] || 0) >= 2) {
-        diagnostico.push("Trastorno de Ansiedad Inducido por Sustancias");
-    }
-
-    // Evaluar Otros Trastornos Especificados de Ansiedad
-    if ((respuestas["Otros Trastornos Especificados de Ansiedad"] || 0) >= 2) {
-        diagnostico.push("Otros Trastornos Especificados de Ansiedad");
-    }
-
-    // Evaluar Trastorno de Estrés Agudo (TEA)
-    if ((respuestas["Trastorno de Estrés Agudo (TEA)"] || 0) >= 2) {
-        diagnostico.push("Trastorno de Estrés Agudo (TEA)");
-    }
-
-    // Evaluar Trastorno de Estrés Postraumático (TEPT)
-    if ((respuestas["Trastorno de Estrés Postraumático (TEPT)"] || 0) >= 2) {
-        diagnostico.push("Trastorno de Estrés Postraumático (TEPT)");
-    }
-
-    // Evaluar Trastornos de Adaptación
-    if ((respuestas["Trastornos de Adaptación"] || 0) >= 2) {
-        diagnostico.push("Trastornos de Adaptación");
-    }
-
-    const resultado = diagnostico.length > 0 ? diagnostico.join(", ") : "Sin diagnóstico claro";
+    // Si no hay diagnósticos y todas las respuestas son "NO"
+    const resultado = diagnostico.length > 0
+        ? diagnostico.join(", ")
+        : todasRespuestasNo
+            ? "Sin diagnóstico claro. No se ha encontrado un diagnóstico basado en las respuestas proporcionadas."
+            : "Sin diagnóstico claro";
 
     return (
         <div className="resultados">

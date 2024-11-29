@@ -8,7 +8,12 @@ function Diagnostico({ respuestas, setRespuestas, setEstado }) {
     const handleRespuesta = (respuesta) => {
         const preguntaActual = preguntaData[indice];
         const categoria = preguntaActual.categoria;
-        const nuevaRespuesta = { ...respuestas, [categoria]: (respuestas[categoria] || 0) + (respuesta === 'Sí' ? 1 : 0) };
+
+        // Aseguramos que las respuestas sean siempre numéricas y se incrementen correctamente
+        const nuevaRespuesta = {
+            ...respuestas,
+            [categoria]: (respuestas[categoria] || 0) + (respuesta === 'Sí' ? 1 : 0)
+        };
 
         setRespuestas(nuevaRespuesta);
 
@@ -27,7 +32,7 @@ function Diagnostico({ respuestas, setRespuestas, setEstado }) {
             nuevoIndice++;
         }
 
-        // Si no hay más preguntas válidas, mostramos resultados
+        // Si no hay más preguntas válidas, mostramos los resultados
         setEstado('resultados');
     };
 
