@@ -1,4 +1,4 @@
-/* Formulario */
+/* Contenedor del formulario */
 .formulario {
     background-color: #fff;
     padding: 40px;
@@ -7,47 +7,97 @@
     margin: 50px auto;
     width: 100%;
     max-width: 480px;
+    animation: fadeIn 0.5s ease-in-out; /* Animación de entrada */
 }
 
+/* Título del formulario */
 .formulario h2 {
     margin-bottom: 25px;
     color: #2980b9;
     font-weight: 700;
     text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.4;
 }
 
+/* Campos de entrada */
 .formulario input {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 20px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #2c3e50;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra interna */
 }
 
+/* Enfocar los campos de entrada */
 .formulario input:focus {
-    border-color: #2980b9;
+    border-color: #f39c12; /* Color naranja suave */
     outline: none;
+    box-shadow: 0 0 8px rgba(243, 156, 18, 0.3); /* Sombra al enfocar */
 }
 
+/* Botón del formulario */
 .formulario button {
-    background-color: #ff6f61;
+    background-color: #f39c12; /* Naranja */
     color: #fff;
     border: none;
-    padding: 12px 25px;
+    padding: 15px;
     border-radius: 50px;
     cursor: pointer;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra del botón */
 }
 
+/* Hover y efecto de clic en el botón */
 .formulario button:hover {
-    background-color: #e74c3c;
+    background-color: #e67e22; /* Naranja más oscuro */
+    transform: translateY(-2px); /* Efecto de elevación */
 }
 
-.page {
-    transition: opacity 0.5s ease-in-out;
-    height: 100%;
-    overflow: hidden; /* Para evitar el corte */
+.formulario button:active {
+    background-color: #d35400; /* Naranja intenso */
+    transform: translateY(0); /* Simulación de clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra reducida */
+}
+
+/* Estilo adicional para mensajes de error o placeholders */
+.formulario input::placeholder {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Hacer que el formulario sea responsive */
+@media (max-width: 768px) {
+    .formulario {
+        padding: 30px;
+        margin: 30px auto;
+    }
+
+    .formulario h2 {
+        font-size: 1.5rem;
+    }
+
+    .formulario button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

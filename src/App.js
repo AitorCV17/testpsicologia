@@ -11,7 +11,6 @@ import Footer from './components/Footer';
 
 import './styles/global.css'; // Estilos globales
 import './styles/navbar.css'; // Estilos del navbar
-import './styles/transitions.css'; // Estilos para transiciones
 
 function App() {
     const [usuario, setUsuario] = React.useState({ nombre: '', edad: '' });

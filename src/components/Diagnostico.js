@@ -3,7 +3,7 @@ import Formulario from './Formulario';
 import Pregunta from './Pregunta';
 import { preguntaData } from '../data/preguntaData';
 import { useNavigate } from 'react-router-dom';
-import '../styles/diagnostico.css';
+import '../styles/diagnostico.css'; // Solo para estilos generales de diagnóstico
 
 function Diagnostico({ respuestas, setRespuestas, usuario, setUsuario }) {
     const [indice, setIndice] = useState(0);
@@ -41,11 +41,10 @@ function Diagnostico({ respuestas, setRespuestas, usuario, setUsuario }) {
 
     return (
         <div className="diagnostico-container">
-            <div className="pregunta-container">
-                {preguntaData[indice] && (
-                    <Pregunta pregunta={preguntaData[indice]} handleRespuesta={handleRespuesta} />
-                )}
-            </div>
+            {/* Muestra el componente Pregunta */}
+            {preguntaData[indice] && (
+                <Pregunta pregunta={preguntaData[indice]} handleRespuesta={handleRespuesta} />
+            )}
         </div>
     );
 }

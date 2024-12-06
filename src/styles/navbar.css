@@ -1,18 +1,18 @@
-/* Navbar fijo */
+/* Navbar */
 .navbar {
-    position: fixed;
+    position: relative; /* Cambia de fixed a relative */
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1030; /* Asegura que el navbar esté por encima del contenido */
+    z-index: 1030; /* Asegura que el navbar esté encima del contenido */
     background-color: #2c3e50;
-    padding: 10px 20px; /* Reduce el padding para hacerlo más pequeño */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para separar el navbar del contenido */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para separar del contenido */
 }
 
 /* Marca y logo */
 .navbar-brand {
-    font-size: 1.5rem; /* Tamaño más compacto */
+    font-size: 1.5rem;
     font-weight: 600;
     color: #fff;
 }
@@ -41,7 +41,13 @@
     }
 }
 
-/* Espaciado inferior del contenido para evitar que el navbar cubra el contenido */
+/* Espaciado superior del contenido para evitar que quede cubierto por el navbar */
 .content {
-    margin-top: 70px; /* Altura del navbar */
+    margin-top: 0; /* Sin margen superior, ya que el navbar es relativo */
+}
+
+.navbar .nav-link.active {
+    font-weight: bold; /* Destaca el enlace activo */
+    color: #f39c12; /* Color naranja vibrante */
+    border-bottom: 2px solid #f39c12; /* Subrayado para indicar selección */
 }

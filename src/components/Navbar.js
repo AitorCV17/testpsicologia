@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaHeartbeat } from 'react-icons/fa';
 
 function Navbar({ resetState }) {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/" onClick={resetState}>
+                <NavLink
+                    className="navbar-brand"
+                    to="/"
+                    onClick={resetState}
+                >
                     <FaHeartbeat style={{ marginRight: '10px' }} />
                     Sistema Experto
-                </Link>
+                </NavLink>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -24,13 +28,35 @@ function Navbar({ resetState }) {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Inicio</Link>
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    isActive ? 'nav-link active' : 'nav-link'
+                                }
+                                end
+                            >
+                                Inicio
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/informacion">Información</Link>
+                            <NavLink
+                                to="/informacion"
+                                className={({ isActive }) =>
+                                    isActive ? 'nav-link active' : 'nav-link'
+                                }
+                            >
+                                Información
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/diagnostico">Diagnóstico</Link>
+                            <NavLink
+                                to="/diagnostico"
+                                className={({ isActive }) =>
+                                    isActive ? 'nav-link active' : 'nav-link'
+                                }
+                            >
+                                Diagnóstico
+                            </NavLink>
                         </li>
                     </ul>
                 </div>

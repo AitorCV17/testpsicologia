@@ -3,17 +3,17 @@ import '../styles/pregunta.css';
 
 function Pregunta({ pregunta, handleRespuesta }) {
     return (
-        <div className="pregunta">
+        <div className="pregunta-container">
             <h3 className="pregunta-title">{pregunta.pregunta}</h3>
             <div className="pregunta-buttons">
                 <button
-                    className="btn pregunta-button btn-si"
+                    className="pregunta-button btn-si"
                     onClick={() => handleRespuesta('Sí')}
                 >
                     Sí
                 </button>
                 <button
-                    className="btn pregunta-button btn-no"
+                    className="pregunta-button btn-no"
                     onClick={() => handleRespuesta('No')}
                 >
                     No

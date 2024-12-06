@@ -2,12 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/resultados.css';
 
-function Resultados({ respuestas, usuario, onGuardar, onReiniciar }) {
+function Resultados({ respuestas, usuario, onReiniciar }) {
     const navigate = useNavigate();
 
     const handleReiniciar = () => {
         onReiniciar(); // Reinicia el estado global
         navigate('/diagnostico'); // Redirige al formulario
+    };
+
+    const handleVerInformacion = () => {
+        navigate('/informacion'); // Redirige a la página de información
     };
 
     const diagnostico = [];
@@ -52,8 +56,8 @@ function Resultados({ respuestas, usuario, onGuardar, onReiniciar }) {
             <h2>Diagnóstico para {usuario.nombre || 'Usuario'}</h2>
             <p>{resultado}</p>
             <div className="botones-container">
-                <button className="btn btn-success" onClick={onGuardar}>
-                    Guardar Resultados
+                <button className="btn btn-primary" onClick={handleVerInformacion}>
+                    Ver Información
                 </button>
                 <button className="btn btn-danger" onClick={handleReiniciar}>
                     Reiniciar

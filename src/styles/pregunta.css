@@ -1,45 +1,103 @@
-/* Contenedor de la pregunta */
-.pregunta {
+/* Contenedor principal de la pregunta */
+.pregunta-container {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 30px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
+    width: 600px; /* Ancho fijo */
+    height: 400px; /* Altura fija */
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly; /* Espacia texto y botones uniformemente */
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
 }
 
-.pregunta-text {
-    font-size: 1.5rem;
+/* Efecto hover en el contenedor */
+.pregunta-container:hover {
+    transform: translateY(-5px); /* Eleva el contenedor */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra más profunda */
+}
+
+/* Texto de la pregunta */
+.pregunta-title {
+    font-size: calc(1.5rem + 0.3vw); /* Tamaño adaptable */
     font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 20px;
+    color: #2980b9; /* Azul profesional */
+    text-align: center;
+    padding: 0 20px; /* Espaciado interno para los bordes laterales */
+    margin: 0; /* Sin margen */
+    line-height: 1.6; /* Mejora la legibilidad */
+    word-wrap: break-word; /* Ajusta palabras largas */
+    overflow: hidden; /* Oculta texto adicional si es demasiado largo */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil en el texto */
+}
+
+/* Contenedor de los botones */
+.pregunta-buttons {
+    display: flex;
+    gap: 20px; /* Espaciado entre botones */
+    margin-top: 20px; /* Espacio entre texto y botones */
+    justify-content: center; /* Centra los botones */
 }
 
 /* Botones de respuesta */
-.pregunta-buttons {
-    display: flex;
-    gap: 20px;
-}
-
 .pregunta-button {
-    padding: 10px 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    border: none;
-    color: white;
+    padding: 15px 30px; /* Botones más grandes */
+    font-size: 1.1rem; /* Tamaño de texto más legible */
+    font-weight: bold; /* Destaca el texto */
+    border-radius: 50px; /* Bordes redondeados */
+    border: none; /* Sin borde */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #ffffff; /* Texto blanco */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    min-width: 130px; /* Tamaño mínimo uniforme */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
 }
 
-.pregunta-button.btn-yes {
-    background-color: #28a745;
+/* Botón "Sí" */
+.pregunta-button.btn-si {
+    background-color: #28a745; /* Verde vibrante */
 }
 
+.pregunta-button.btn-si:hover {
+    background-color: #218838; /* Verde más oscuro */
+    transform: translateY(-2px); /* Eleva el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más profunda */
+}
+
+/* Botón "No" */
 .pregunta-button.btn-no {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Rojo vibrante */
 }
 
+.pregunta-button.btn-no:hover {
+    background-color: #c82333; /* Rojo más oscuro */
+    transform: translateY(-2px); /* Eleva el botón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más profunda */
+}
+
+/* Efecto hover general */
 .pregunta-button:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+    opacity: 0.95; /* Sutil cambio de opacidad */
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .pregunta-container {
+        width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+        height: auto; /* Permite que el contenido se ajuste automáticamente */
+        padding: 20px;
+    }
+
+    .pregunta-title {
+        font-size: calc(1.2rem + 0.3vw); /* Texto más pequeño en pantallas pequeñas */
+    }
+
+    .pregunta-button {
+        padding: 12px 20px; /* Botones más compactos */
+        font-size: 1rem; /* Tamaño de texto ajustado */
+    }
 }
