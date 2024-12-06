@@ -1,7 +1,5 @@
-/*src/components/Inicio.js*/
 import React from "react";
 import { Link } from "react-router-dom"; // Para navegación
-import "../styles/styles.css"; // Asegúrate de la ruta correcta
 
 function Inicio() {
     return (

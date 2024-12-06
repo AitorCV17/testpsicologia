@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { preguntaData } from '../data/preguntaData'; // Importamos las preguntaData
+import { preguntaData } from '../data/preguntaData'; // Importa los datos de las preguntas
 import Pregunta from './Pregunta';
+import { useNavigate } from 'react-router-dom';
 
-function Diagnostico({ respuestas, setRespuestas, setEstado }) {
-    const [indice, setIndice] = useState(0);
+function Diagnostico({ respuestas, setRespuestas }) {
+    const [indice, setIndice] = useState(0); // Controla la pregunta actual
+    const navigate = useNavigate();
 
     const handleRespuesta = (respuesta) => {
-        const preguntaActual = preguntaData[indice];
+        const preguntaActual = preguntaData[indice];  // Obtén la pregunta actual
         const categoria = preguntaActual.categoria;
 
-        // Aseguramos que las respuestas sean siempre numéricas y se incrementen correctamente
+        // Actualiza las respuestas, sumando 1 si la respuesta es "Sí"
         const nuevaRespuesta = {
             ...respuestas,
             [categoria]: (respuestas[categoria] || 0) + (respuesta === 'Sí' ? 1 : 0)
@@ -17,28 +19,32 @@ function Diagnostico({ respuestas, setRespuestas, setEstado }) {
 
         setRespuestas(nuevaRespuesta);
 
-        // Avanzamos a la siguiente pregunta
         let nuevoIndice = indice + 1;
 
-        // Buscar la siguiente pregunta válida considerando dependencias
+        // Mueve al siguiente índice de pregunta o termina si se acabaron las preguntas
         while (nuevoIndice < preguntaData.length) {
             const siguientePregunta = preguntaData[nuevoIndice];
             const preguntaDependencia = siguientePregunta.dependencia;
 
+            // Avanza si la dependencia es satisfactoria
             if (!preguntaDependencia || nuevaRespuesta[preguntaDependencia]) {
-                setIndice(nuevoIndice);
+                setIndice(nuevoIndice); // Avanza al siguiente índice
                 return;
             }
             nuevoIndice++;
         }
 
-        // Si no hay más preguntas válidas, mostramos los resultados
-        setEstado('resultados');
+        // Al terminar, navega a los resultados
+        navigate('/diagnostico/resultados');
     };
 
     return (
-        <div className="diagnostico">
-            <Pregunta pregunta={preguntaData[indice]} handleRespuesta={handleRespuesta} />
+        <div className="diagnostico-container container d-flex justify-content-center align-items-center">
+            <div className="pregunta-container">
+                {preguntaData[indice] && (
+                    <Pregunta pregunta={preguntaData[indice]} handleRespuesta={handleRespuesta} />
+                )}
+            </div>
         </div>
     );
 }

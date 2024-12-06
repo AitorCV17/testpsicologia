@@ -1,0 +1,120 @@
+/* Aseguramos que la altura de la página se ajuste y las preguntas estén bien centradas */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+/* Para el contenedor principal */
+.main-container {
+    flex-grow: 1; /* Hace que el contenido ocupe el espacio disponible */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Transiciones de las páginas */
+.page {
+    transition: opacity 0.5s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajustamos los contenedores para las páginas */
+.formulario-container, .diagnostico-container, .resultados-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Evitar que el contenido se desborde */
+.d-flex {
+    display: flex;
+}
+
+/* Evitar el desplazamiento no deseado */
+.container-fluid {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para la pregunta y su contenedor */
+.pregunta-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 300px;
+}
+
+/* Contenedor de la pregunta con fondo y sombras */
+.pregunta {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Asegura que el texto esté centrado */
+}
+
+/* Botones de "Sí" y "No" */
+.pregunta-button {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 150px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 50px; /* Botones redondeados */
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease; /* Transición suave al cambiar de color */
+}
+
+/* Colores de los botones */
+.pregunta-button:hover {
+    opacity: 0.9;
+}
+
+.pregunta-button.btn-yes {
+    background-color: #28a745; /* Verde para "Sí" */
+}
+
+.pregunta-button.btn-no {
+    background-color: #dc3545; /* Rojo para "No" */
+}
+
+/* Evitar que el contenido se desborde */
+.container-fluid {
+    overflow: hidden;
+}
+
+.page {
+    transition: opacity 0.5s ease-in-out;
+    height: 100%;
+    overflow: hidden; /* Para evitar el corte */
+}

@@ -1,0 +1,53 @@
+/* Formulario */
+.formulario {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    width: 100%;
+    max-width: 480px;
+}
+
+.formulario h2 {
+    margin-bottom: 25px;
+    color: #2980b9;
+    font-weight: 700;
+    text-align: center;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.formulario input:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+.formulario button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.formulario button:hover {
+    background-color: #e74c3c;
+}
+
+.page {
+    transition: opacity 0.5s ease-in-out;
+    height: 100%;
+    overflow: hidden; /* Para evitar el corte */
+}
