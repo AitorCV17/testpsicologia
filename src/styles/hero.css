@@ -3,42 +3,34 @@
     background: linear-gradient(135deg, #2980b9, #6dd5fa);
     color: #fff;
     text-align: center;
-    padding: 100px 20px;
-    border-bottom: 5px solid #fff;
+    padding: 100px 20px 60px; /* Margen interno para espaciar contenido */
+    margin-top: -1px; /* Corrige cualquier borde residual y elimina espacio entre navbar y hero */
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 30px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .hero p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 400;
-    margin-bottom: 40px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
 }
 
 .hero .btn {
     font-size: 1.2rem;
-    padding: 15px 30px;
+    padding: 12px 30px;
     border-radius: 50px;
     background-color: #ff6f61;
     color: #fff;
+    border: none;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
 }
 
 .hero .btn:hover {
     background-color: #e74c3c;
-    border-color: #e74c3c;
     transform: scale(1.05);
-}
-
-.page {
-    transition: opacity 0.5s ease-in-out;
-    height: 100%;
-    overflow: hidden; /* Para evitar el corte */
 }
