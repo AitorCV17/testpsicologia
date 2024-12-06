@@ -1,6 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/resultados.css';
 
 function Resultados({ respuestas, usuario, onGuardar, onReiniciar }) {
+    const navigate = useNavigate();
+
+    const handleReiniciar = () => {
+        onReiniciar(); // Reinicia el estado global
+        navigate('/diagnostico'); // Redirige al formulario
+    };
+
     const diagnostico = [];
 
     const evaluarDiagnostico = (categoria, umbral) => {
@@ -43,8 +52,12 @@ function Resultados({ respuestas, usuario, onGuardar, onReiniciar }) {
             <h2>Diagnóstico para {usuario.nombre || 'Usuario'}</h2>
             <p>{resultado}</p>
             <div className="botones-container">
-                <button className="btn btn-success" onClick={onGuardar}>Guardar Resultados</button>
-                <button className="btn btn-danger" onClick={onReiniciar}>Reiniciar</button>
+                <button className="btn btn-success" onClick={onGuardar}>
+                    Guardar Resultados
+                </button>
+                <button className="btn btn-danger" onClick={handleReiniciar}>
+                    Reiniciar
+                </button>
             </div>
         </div>
     );

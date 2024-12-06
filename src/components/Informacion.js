@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/informacion.css';
 
 function Informacion() {
     return (

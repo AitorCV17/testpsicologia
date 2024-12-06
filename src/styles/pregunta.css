@@ -1,0 +1,45 @@
+/* Contenedor de la pregunta */
+.pregunta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pregunta-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Botones de respuesta */
+.pregunta-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.pregunta-button {
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pregunta-button.btn-yes {
+    background-color: #28a745;
+}
+
+.pregunta-button.btn-no {
+    background-color: #dc3545;
+}
+
+.pregunta-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/formulario.css';
 
-function Formulario({ usuario, setUsuario }) {
+function Formulario({ usuario, setUsuario, onComplete }) {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (usuario.nombre && usuario.edad) {
-            // Navegar a la siguiente pantalla usando React Router
-            navigate('/diagnostico/pregunta');
+            onComplete(); // Notifica que el formulario está completo
         } else {
             alert('Por favor, ingresa tu nombre y edad');
         }
@@ -33,7 +33,7 @@ function Formulario({ usuario, setUsuario }) {
                         onChange={(e) => setUsuario({ ...usuario, edad: e.target.value })}
                         className="form-control mb-3"
                     />
-                    <button type="submit" className="btn btn-primary">Comenzar</button>
+                    <button type="submit" className="btn btn-primary">Comenzar Diagnóstico</button>
                 </form>
             </div>
         </div>

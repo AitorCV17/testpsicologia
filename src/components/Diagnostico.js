@@ -1,45 +1,46 @@
 import React, { useState } from 'react';
-import { preguntaData } from '../data/preguntaData'; // Importa los datos de las preguntas
+import Formulario from './Formulario';
 import Pregunta from './Pregunta';
+import { preguntaData } from '../data/preguntaData';
 import { useNavigate } from 'react-router-dom';
+import '../styles/diagnostico.css';
 
-function Diagnostico({ respuestas, setRespuestas }) {
-    const [indice, setIndice] = useState(0); // Controla la pregunta actual
+function Diagnostico({ respuestas, setRespuestas, usuario, setUsuario }) {
+    const [indice, setIndice] = useState(0);
+    const [formularioCompletado, setFormularioCompletado] = useState(false);
     const navigate = useNavigate();
 
     const handleRespuesta = (respuesta) => {
-        const preguntaActual = preguntaData[indice];  // Obtén la pregunta actual
+        const preguntaActual = preguntaData[indice];
         const categoria = preguntaActual.categoria;
 
-        // Actualiza las respuestas, sumando 1 si la respuesta es "Sí"
         const nuevaRespuesta = {
             ...respuestas,
-            [categoria]: (respuestas[categoria] || 0) + (respuesta === 'Sí' ? 1 : 0)
+            [categoria]: (respuestas[categoria] || 0) + (respuesta === 'Sí' ? 1 : 0),
         };
 
         setRespuestas(nuevaRespuesta);
 
         let nuevoIndice = indice + 1;
-
-        // Mueve al siguiente índice de pregunta o termina si se acabaron las preguntas
-        while (nuevoIndice < preguntaData.length) {
-            const siguientePregunta = preguntaData[nuevoIndice];
-            const preguntaDependencia = siguientePregunta.dependencia;
-
-            // Avanza si la dependencia es satisfactoria
-            if (!preguntaDependencia || nuevaRespuesta[preguntaDependencia]) {
-                setIndice(nuevoIndice); // Avanza al siguiente índice
-                return;
-            }
-            nuevoIndice++;
+        if (nuevoIndice < preguntaData.length) {
+            setIndice(nuevoIndice);
+        } else {
+            navigate('/diagnostico/resultados'); // Navega a los resultados
         }
-
-        // Al terminar, navega a los resultados
-        navigate('/diagnostico/resultados');
     };
 
+    if (!formularioCompletado) {
+        return (
+            <Formulario
+                usuario={usuario}
+                setUsuario={setUsuario}
+                onComplete={() => setFormularioCompletado(true)}
+            />
+        );
+    }
+
     return (
-        <div className="diagnostico-container container d-flex justify-content-center align-items-center">
+        <div className="diagnostico-container">
             <div className="pregunta-container">
                 {preguntaData[indice] && (
                     <Pregunta pregunta={preguntaData[indice]} handleRespuesta={handleRespuesta} />
