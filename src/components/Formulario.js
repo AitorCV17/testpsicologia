@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/formulario.css';
 
 function Formulario({ usuario, setUsuario, onComplete }) {
